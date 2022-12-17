@@ -1,6 +1,4 @@
 package org.example;
-
-import java.util.Objects;
 import java.util.Scanner;
 
 class DLLNode<E> {
@@ -27,27 +25,6 @@ class DLL<E> {
         this.first = null;
         this.last = null;
     }
-
-    public void deleteList() {
-        first = null;
-        last = null;
-    }
-
-    public int length() {
-        int ret;
-        if (first != null) {
-            DLLNode<E> tmp = first;
-            ret = 1;
-            while (tmp.succ != null) {
-                tmp = tmp.succ;
-                ret++;
-            }
-            return ret;
-        } else
-            return 0;
-
-    }
-
     public void insertFirst(E o) {
         DLLNode<E> ins = new DLLNode<E>(o, null, first);
         if (first == null)
@@ -66,27 +43,6 @@ class DLL<E> {
             last = ins;
         }
     }
-
-    public void insertAfter(E o, DLLNode<E> after) {
-        if (after == last) {
-            insertLast(o);
-            return;
-        }
-        DLLNode<E> ins = new DLLNode<E>(o, after, after.succ);
-        after.succ.pred = ins;
-        after.succ = ins;
-    }
-
-    public void insertBefore(E o, DLLNode<E> before) {
-        if (before == first) {
-            insertFirst(o);
-            return;
-        }
-        DLLNode<E> ins = new DLLNode<E>(o, before.pred, before);
-        before.pred.succ = ins;
-        before.pred = ins;
-    }
-
     public E deleteFirst() {
         if (first != null) {
             DLLNode<E> tmp = first;
@@ -98,25 +54,9 @@ class DLL<E> {
         } else
             return null;
     }
-
-    public E deleteLast() {
-        if (first != null) {
-            if (first.succ == null)
-                return deleteFirst();
-            else {
-                DLLNode<E> tmp = last;
-                last = last.pred;
-                last.succ = null;
-                return tmp.element;
-            }
-        }
-        // else throw Exception
-        return null;
-    }
-
     @Override
     public String toString() {
-        String ret = new String();
+        String ret = "";
         if (first != null) {
             DLLNode<E> tmp = first;
             ret += tmp + "<->";
@@ -138,19 +78,25 @@ class DLL<E> {
         return last;
     }
 
+    public boolean isEmpty() {
+        return (first == null) && (last == null);
+    }
 }
 
 public class PalindromeDLL {
 
     public static int isItPalindrome(DLL<Integer> list){
         //Vashiot kod tuka...
-        //if(palindtod) then 1 else -1
+        if (list == null || list.isEmpty())
+            return -1;
         DLLNode<Integer> first=list.getFirst();
         DLLNode<Integer> last=list.getLast();
         int count=0,test=0;
         while (first !=null && last !=null)
         {
             test++;
+            if (first.element == null || last.element == null)
+                return -1;
             if(first.element==last.element){
                 count++;
             }
