@@ -1,2 +1,2 @@
 # Algoritmi-PodatocniStrukturi
-# PrvaZadacaKoll1 -Prva kollokviumsa zadaca na 26.11.2022
+# PrvaZadacaKoll1 -Prva kollokviumsa zadaca na 26.11.2022  
