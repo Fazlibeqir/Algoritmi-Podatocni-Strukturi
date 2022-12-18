@@ -1,0 +1,10 @@
+.searchB:hover {
+    /* Style the search button when it is hovered over */
+    -fx-background-color: orange; /* Change the background color */
+}
+
+.searchB:pressed {
+    /* Style the search button when it is pressed */
+    -fx-background-color: #2196F3; /* Change the background color */
+}
+
